@@ -27,7 +27,7 @@ const Header = () => {
 	return (
 		<header className="w-full bg-white shadow-xl min-h-[10vh]">
 			<div className=" flex justify-between items-center px-[5vw] py-4">
-				<h2 className="text-2xl font-semibold">{getMainSlug(pathname)}</h2>
+				<h2 className="text-2xl text-blue-900 font-bold">{getMainSlug(pathname)}</h2>
 				<div className="text-center">
 					<p className="text-lg text-gray-700 font-semibold tracking-wide">{time.toLocaleDateString()}</p>
 					<p className="text-slate-500 font-medium trancking-wide">{formatTime(time)}</p>
