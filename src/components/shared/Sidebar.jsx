@@ -40,12 +40,12 @@ const Sidebar = () => {
 				</ul>
 			</nav>
 			<nav>
-				<ul className="flex items-center justify-center gap-4 py-4">
+				<ul className="flex items-center justify-center gap-6 py-4">
 					{socials.map((social) => {
 						const IconComponent = social.icon;
 						return (
 							<li key={social.name} title={social.name}>
-								<a href={social.href} target="_blank" className="text-3xl text-blue-900 hover:text-blue-900/60 transition-all duration-300">
+								<a href={social.href} target="_blank" className="text-2xl text-blue-900 hover:text-blue-900/60 transition-all duration-300">
 									<IconComponent />
 								</a>
 							</li>
