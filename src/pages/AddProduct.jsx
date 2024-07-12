@@ -2,17 +2,22 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate, useOutletContext } from "react-router-dom";
 
 function AddProduct() {
+	// Get the data form the context with useOutletContext
 	const { data, setData } = useOutletContext();
+
+	// Prepare the useNavigate hook
 	const navigate = useNavigate();
 
+	// Extract the register, handleSubmit and formState from the useForm hook
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
 
+	// Handle the form submission
 	const onSubmit = (formData) => {
-		// Create the new product object
+		// Create a new product object with the form data
 		const newProduct = {
 			id: formData.id,
 			nom: formData.nom,
@@ -23,27 +28,29 @@ function AddProduct() {
 			fournisseur: formData.fournisseur,
 		};
 
-		// Update the products list by adding the new product to the beginning
+		// Update the products list
 		const updatedProducts = [...data[0], newProduct];
 
-		// Set the updated data to the context
+		// Set the updated data to the context using setData
 		setData([updatedProducts, data[1]]);
 
 		// Display a success message in the form of an alert
 		alert("Le produit a bien été ajouté");
 
-		// Go back to the products page
+		// Navigate back to the products page
 		navigate("/produits");
 	};
 
 	return (
 		<div className="flex flex-col p-10">
+			{/* Title */}
 			<h3 className="text-2xl lg:text-4xl uppercase text-center mb-6">
 				Ajouter <span className="text-blue-900 font-bold">un Produit</span>
 			</h3>
 
 			<form className="w-full" onSubmit={handleSubmit(onSubmit)}>
 				<div className="flex flex-col lg:flex-row justify-between gap-10 mb-5">
+					{/* ID input field */}
 					<div className="flex flex-col w-full gap-1">
 						<label className="font-medium" htmlFor="id">
 							ID du produit<span className="text-sm text-red-500 font-medium"> *</span>
@@ -63,6 +70,8 @@ function AddProduct() {
 						/>
 						{errors.id && <span className="text-xs text-red-500 font-medium tracking-wide">{errors.id.message}</span>}
 					</div>
+
+					{/* Name input field */}
 					<div className="flex flex-col w-full gap-1">
 						<label className="font-medium" htmlFor="nom">
 							Nom du produit<span className="text-sm text-red-500 font-medium"> *</span>
@@ -81,7 +90,9 @@ function AddProduct() {
 						{errors.nom && <span className="text-xs text-red-500 font-medium tracking-wide">{errors.nom.message}</span>}
 					</div>
 				</div>
+
 				<div className="flex flex-col lg:flex-row justify-between gap-10 mb-5">
+					{/* Price input field */}
 					<div className="flex flex-col w-full gap-1">
 						<label className="font-medium" htmlFor="prix">
 							Prix du produit<span className="text-sm text-red-500 font-medium"> *</span>
@@ -98,6 +109,8 @@ function AddProduct() {
 						/>
 						{errors.prix && <span className="h-6 text-xs text-red-500 font-medium tracking-wide">{errors.prix.message}</span>}
 					</div>
+
+					{/* Stock input field */}
 					<div className="flex flex-col w-full gap-1">
 						<label className="font-medium" htmlFor="stock">
 							Quantité en stock<span className="text-sm text-red-500 font-medium"> *</span>
@@ -115,7 +128,9 @@ function AddProduct() {
 						{errors.stock && <span className="text-xs text-red-500 font-medium tracking-wide">{errors.stock.message}</span>}
 					</div>
 				</div>
+
 				<div className="flex flex-col lg:flex-row justify-between gap-10 mb-5">
+					{/* Categorie input field */}
 					<div className="flex flex-col w-full gap-1">
 						<label className="font-medium" htmlFor="categorie">
 							Catégorie<span className="text-sm text-red-500 font-medium"> *</span>
@@ -133,6 +148,8 @@ function AddProduct() {
 						</select>
 						{errors.categorie && <span className="text-xs text-red-500 font-medium tracking-wide">{errors.categorie.message}</span>}
 					</div>
+
+					{/* Fournisseur input field */}
 					<div className="flex flex-col w-full gap-1">
 						<label className="font-medium" htmlFor="fournisseur">
 							Fournisseur<span className="text-sm text-red-500 font-medium"> *</span>
@@ -154,6 +171,8 @@ function AddProduct() {
 						{errors.fournisseur && <span className="text-xs text-red-500 font-medium tracking-wide">{errors.fournisseur.message}</span>}
 					</div>
 				</div>
+
+				{/* Description input field */}
 				<div className="flex flex-col lg:flex-row justify-between gap-10 mb-5">
 					<div className="flex flex-col w-full gap-1">
 						<label className="font-medium" htmlFor="description">
@@ -174,6 +193,8 @@ function AddProduct() {
 						<small className="text-red-500 text-xs">* champs obligatoires</small>
 					</div>
 				</div>
+
+				{/* Submit and Cancel buttons */}
 				<div className="flex justify-end items-center gap-4 ">
 					<input
 						type="submit"

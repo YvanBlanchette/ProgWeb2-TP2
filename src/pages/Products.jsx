@@ -1,4 +1,4 @@
-import ProductCard from "@/components/shared/ProductCard";
+import ProductCard from "@/components/ProductCard";
 import { FaPlus } from "react-icons/fa6";
 import { Link, useOutletContext } from "react-router-dom";
 
